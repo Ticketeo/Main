@@ -1,0 +1,45 @@
+<%= form_for(@queue_model) do |f| %>
+  <% if @queue_model.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@queue_model.errors.count, "error") %> prohibited this queue_model from being saved:</h2>
+
+      <ul>
+      <% @queue_model.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :gps_longitude %><br>
+    <%= f.number_field :gps_longitude %>
+  </div>
+  <div class="field">
+    <%= f.label :gps_latitude %><br>
+    <%= f.number_field :gps_latitude %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :num_customer %><br>
+    <%= f.number_field :num_customer %>
+  </div>
+  <div class="field">
+    <%= f.label :last_customer %><br>
+    <%= f.number_field :last_customer %>
+  </div>
+  <div class="field">
+    <%= f.label :average_time %><br>
+    <%= f.number_field :average_time %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
