@@ -1,6 +1,6 @@
 Main::Application.routes.draw do
   resources :queue_models
-
+  post 'queue_models/:id/book_a_place' => 'queue_models#book_a_place'
   get "home/index"
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.

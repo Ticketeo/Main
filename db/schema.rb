@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141106213848) do
+ActiveRecord::Schema.define(version: 20141107112545) do
+
+  create_table "place_bookings", force: true do |t|
+    t.string   "user_name"
+    t.string   "queue_name"
+    t.integer  "number"
+    t.time     "start"
+    t.time     "end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "queue_models", force: true do |t|
     t.string   "name"

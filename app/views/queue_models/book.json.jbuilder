@@ -1,0 +1,1 @@
+json.extract! @place_booking, :id, :user_name, :queue_name, :number, :start, :end

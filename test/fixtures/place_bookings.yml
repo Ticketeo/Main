@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_name: MyString
+  queue_name: MyString
+  number: 1
+  start: 2014-11-07 12:25:45
+  end: 2014-11-07 12:25:45
+
+two:
+  user_name: MyString
+  queue_name: MyString
+  number: 1
+  start: 2014-11-07 12:25:45
+  end: 2014-11-07 12:25:45

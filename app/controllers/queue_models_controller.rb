@@ -1,5 +1,8 @@
 class QueueModelsController < ApplicationController
-  before_action :set_queue_model, only: [:show, :edit, :update, :destroy]
+  before_action :set_queue_model, only: [:show, :edit, :update, :destroy, :book_a_place]
+
+  # On saute une etape de securite si on appel BOOK en JSON
+  skip_before_action :verify_authenticity_token, only: [:book_a_place]
 
   # GET /queue_models
   # GET /queue_models.json
@@ -61,6 +64,22 @@ class QueueModelsController < ApplicationController
     end
   end
 
+  # POST /shows/1/book.json
+  def book_a_place
+    # On crée un nouvel objet booking à partir des paramètres reçus
+    @place_booking = Place_booking.new(place_booking_params)
+    # On précise que cet object Booking dépend du show concerné
+    @place_booking.queue_model = @queue_model
+
+    respond_to do |format|
+      if @place_booking.save
+        format.json
+      else
+        format.json { render json: @place_booking.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_queue_model
@@ -70,5 +89,9 @@ class QueueModelsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def queue_model_params
       params.require(:queue_model).permit(:id, :name, :gps_longitude, :gps_latitude, :description, :num_customer, :last_customer, :average_time)
+    end
+
+    def place_booking_params
+      params.require(:place_booking).permit(:user_name, :queue_name, :number, :start, :end)
     end
 end
