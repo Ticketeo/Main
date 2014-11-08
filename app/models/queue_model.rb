@@ -1,3 +1,3 @@
 class QueueModel < ActiveRecord::Base
-	has many :place_bookings
+	has_many :place_bookings
 end
